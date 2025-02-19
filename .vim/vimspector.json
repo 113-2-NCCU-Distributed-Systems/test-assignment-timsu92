@@ -1,0 +1,149 @@
+{
+	"$schema": "https://puremourning.github.io/vimspector/schema/vimspector.schema.json#",
+	"configurations": {
+		"launch - C family - one file": {
+			"adapter": "vscode-cpptools",
+			"filetypes": ["cpp", "c", "objc"],
+			"configuration": {
+				"type":"cppdbg",
+				"request": "launch",
+				"program": "${program:${workspaceRoot\\}/a.out}",
+				"args": ["*${CommandLineArgs}"],
+				"cwd": "${workspaceRoot}",
+				"environment": [],
+				"externalConsole": true,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "Enable pretty-printing for gdb",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				],
+				"stopAtEntry": false
+			},
+			"breakpoints": {
+				"exception": {
+					"cpp_catch": "N",
+					"cpp_throw": "Y",
+					"all": "N"
+				}
+			}
+		},
+		"launch - C family - one file - g++":{
+			"extends": "launch - C family - one file",
+			"filetypes": ["c", "cpp", "objc"],
+			"configuration": {
+				"program": "${workspaceRoot}/a.out"
+			},
+			"variables": {
+				"BUILD_IGNORED": {
+					"shell": ["g++", "-g", "${file}", "-o", "${workspaceRoot}/a.out"]
+				}
+			}
+		},
+		"launch - C family - one file - g++ - stdin": {
+			"extends": "launch - C family - one file - g++",
+			"filetypes": ["c", "cpp", "objc"],
+			"configuration": {
+				"args": ["<", "${file_fed_to_stdin}"]
+			}
+		},
+		"launch - C family - make":{
+			"extends": "launch - C family - one file",
+			"filetypes": ["c", "cpp", "objc"],
+			"configuration": {
+				"program": "${workspaceRoot}/${program:${fileBasenameNoExtension\\}}"
+			},
+			"variables": {
+				"BUILD_IGNORED": {
+					"shell": ["make"],
+					"cwd": "${workspaceRoot}"
+				}
+			}
+		},
+		"launch - C family - make - input from file":{
+			"extends": "launch - C family - make",
+			"filetypes": ["c", "cpp", "objc"],
+			"configuration": {
+				"args": ["${args}"]
+			},
+			"variables":{
+				"args":{
+					"shell": ["cat", "${argvFileName:in}"],
+					"cwd": "${workspaceRoot}"
+				}
+			}
+		},
+		"launch - C family - CMake":{
+			"extends": "launch - C family - one file",
+			"filetypes": ["cpp", "c", "objc"],
+			"configuration": {
+				"program": "${program:build/a.out}"
+			},
+			"variables":{
+				"CHECK_CMAKELISTS_IGNORED":{
+					"shell": ["ls", "CMakeLists.txt"],
+					"cwd": "${workspaceRoot}"
+				},
+				"BUILD_IGNORED":{
+					"shell": ["cmake", "--build", "."],
+					"cwd": "${workspaceRoot}/build"
+				}
+			}
+		},
+		"launch - Python - one file":{
+			"adapter":"debugpy",
+			"filetypes": ["python"],
+			"configuration": {
+				"type": "python",
+				"request": "launch",
+				"cwd": "${workspaceRoot}",
+				"program": "${relativeFile}",
+				"console": "externalTerminal",
+				"python": "${PYTHON}",
+				"args": ["*${CommandLineArgs}"]
+			},
+			"breakpoints": {
+				"exception": {
+					"raised": "N",
+					"uncaught": "Y",
+					"userUnhandled": "Y"
+				}
+			},
+			"variables":{
+				"PYTHON":{
+					"shell": ["which", "python"]
+				}
+			}
+		},
+		"launch - Python - one file - argv":{
+			"extends": "launch - Python - one file",
+			"filetypes": ["python"],
+			"configuration": {
+				"args": ["${CommandLineArgs}"]
+			},
+			"variables":{
+				"CommandLineArgs":{
+					"shell": ["cat", "${argvFileName:in}"],
+					"cwd": "${workspaceRoot}"
+				}
+			}
+		},
+		"launch - Rust":{
+			"adapter": "CodeLLDB",
+			"filetypes": ["rust"],
+			"configuration": {
+				"request": "launch",
+				"program": "${Executable}",
+				"args": ["*${Args}"]
+			},
+			"breakpoints": {
+				"exception": {
+					"cpp_throw": "Y",
+					"cpp_catch": "N"
+				}
+			}
+		}
+	}
+}

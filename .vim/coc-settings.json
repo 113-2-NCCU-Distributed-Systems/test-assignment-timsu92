@@ -1,0 +1,64 @@
+{
+	"clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.3/clangd_15.0.3/bin/clangd",
+	"coc.source.omni.filetypes": ["VimspectorPrompt"],
+	"markdownlint.config": {
+		"line_length": false
+	},
+	"semanticTokens.enable": true,
+	"python.analysis.diagnosticSeverityOverrides": {
+		"reportImportCycles": "information",
+		"reportUnusedImport": "information",
+		"reportUnusedClass": "information",
+		"reportUnusedFunction": "information",
+		"reportUnusedVariable": "information",
+		"reportDuplicateImport": "warning",
+		"reportUntypedNamedTuple": "information",
+		"reportPrivateUsage": "warning",
+		"reportTypeCommentUsage": "warning",
+		"reportConstantRedefinition": "warning",
+		"reportIncompatibleMethodOverride": "information",
+		"reportIncompatibleVariableOverride": "information",
+		"reportMissingSuperCall": "warning",
+		"reportUninitializedInstanceVariable": "warning",
+		"reportMissingTypeArgument": "information",
+		"reportUnnecessaryIsInstance": "information",
+		"reportUnnecessaryCast": "information",
+		"reportUnnecessaryComparison": "information",
+		"reportUnnecessaryContains": "information",
+		"reportImplicitStringConcatenation": "warning",
+		"reportUnnecessaryTypeIgnoreComment": "information"
+	},
+	"python.formatting.provider": "black",
+	"pyright.organizeimports.provider": "pyright",
+	"colors.enable": true,
+	"snippet.highlight": true,
+	"inlayHint.refreshOnInsertMode": true,
+	"list.smartCase": true,
+	"list.previousKeymap": "<up>",
+	"list.nextKeymap": "<down>",
+	"coc.preferences.jumpCommand": "tab drop",
+	"tree.closedIcon": "",
+	"tree.openedIcon": "",
+	"outline.sortBy": "position",
+	"cSpell.userWords": [
+		"Powerline",
+		"clangd",
+		"omni",
+		"uncommenting"
+	],
+	"cSpell.flagWords": [
+		"hte",
+		"teh"
+	],
+	"cSpell.allowCompoundWords": true,
+	"cSpell.languageSettings": [
+		{"languageId": "css", "dictionaries": ["fonts"]}
+	],
+	"volar.tsLocale": "zh-tw",
+	"volar.autoClosingTags": true,
+	"volar.diagnostics.delay": 10,
+	"pydocstring.formatter": "google",
+	"pydocstring.enableFileAction": true,
+	"rust-analyzer.debug.runtime": "vimspector",
+	"rust-analyzer.debug.vimspector.configuration.name": "launch - Rust",
+}
