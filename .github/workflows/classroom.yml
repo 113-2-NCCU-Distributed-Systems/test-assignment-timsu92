@@ -24,9 +24,21 @@ jobs:
         expected-output: hey buddy!
         comparison-method: exact
         timeout: 1
+    - name: Say Hello
+      id: say-hello
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Say Hello
+        setup-command: ''
+        command: echo 'Hello students!'
+        input: ''
+        expected-output: Hello students!
+        comparison-method: exact
+        timeout: 1
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         HELLO-WORLD_RESULTS: "${{steps.hello-world.outputs.result}}"
+        SAY-HELLO_RESULTS: "${{steps.say-hello.outputs.result}}"
       with:
-        runners: hello-world
+        runners: hello-world,say-hello
