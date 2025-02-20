@@ -1,4 +1,5 @@
 # vimrc: my vim settings
+new edits
 Note! This is a config file on Ubuntu 22.04 on WSL2. If you use another system, you may need some changes to it.
 
 Although contents in here still valid, many of the plugins I use now aren't updated to this list😢 I'll try to find a time to do it.
